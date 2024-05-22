@@ -22,6 +22,6 @@ jobs:
    steps:
    - uses: actions/checkout@v4
    - name: Dependencies
-     run: brew install gtk+3 libopenmp
+     run: brew install gtk+3 libomp
    - name: make gtk
      run: TARGET=gtk make

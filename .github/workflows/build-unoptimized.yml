@@ -40,7 +40,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      # TODO: build using MSVC. It currently errors and warns on a whole bunch of stuff
-      # Also yes, that requires either shenanigans or a seperate action. - uses: ilammy/msvc-dev-cmd@v1
+      # Build using MSVC. It currently warns on a whole bunch of stuff
+      - uses: ilammy/msvc-dev-cmd@v1
       - name: Make target ${{ matrix.target }}
-        run:  $env:TARGET='${{ matrix.target }}'; make
+        run:  $env:TARGET='${{ matrix.target }}'; $env:CXX='cl.exe'; make

@@ -18,7 +18,7 @@ CFLAGS ?= -g
 XFILES :=
 
 SOURCES := $(SRCDIR)/*.cpp
-SOURCES = $(filter-out $(SRCDIR)/flips-gtk.cpp $(SRCDIR)/flips-w32.cpp,$(SOURCES))
+SOURCES := $(filter-out $(SRCDIR)/flips-gtk.cpp $(SRCDIR)/flips-w32.cpp,$(SOURCES))
 
 PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/bin

@@ -29,6 +29,7 @@ jobs:
 
   windows:
     runs-on: windows-latest
+    shell: bash
     steps: 
     - uses: actions/checkout@v4
     - name: make

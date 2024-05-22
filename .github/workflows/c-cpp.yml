@@ -15,11 +15,11 @@ jobs:
       run: sudo apt -y install libgtk-3-dev
       # TODO: use the make.sh for releases as they're optimized.
     - name: make gtk
-      run: make gtk
+      run: TARGET=gtk make
 
   macos:
    runs-on: macos-13
    steps:
    - uses: actions/checkout@v4
    - name: make gtk
-     run: make gtk
+     run: TARGET=gtk make

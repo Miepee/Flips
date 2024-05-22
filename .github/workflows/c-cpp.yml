@@ -26,3 +26,10 @@ jobs:
    - name: make gtk
      # Using brew's llvm, because apple's does not support -fopenmp
      run: CC=/usr/local/opt/llvm/bin/clang CXX=/usr/local/opt/llvm/bin/clang++ TARGET=gtk make
+
+  windows:
+    runs-on: windows-latest
+    steps: 
+    - uses: actions/checkout@v4
+    - name: make
+      run: make

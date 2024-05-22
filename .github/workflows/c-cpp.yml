@@ -22,6 +22,7 @@ jobs:
    steps:
    - uses: actions/checkout@v4
    - name: Dependencies
-     run: brew install gtk+3 libomp
+     run: brew install gtk+3 libomp llvm
    - name: make gtk
-     run: TARGET=gtk make
+     # Using brew's llvm, because apple's does not support -fopenmp
+     run: CC=/usr/local/opt/llvm/bin/clang TARGET=gtk make

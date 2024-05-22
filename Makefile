@@ -18,6 +18,7 @@ CFLAGS ?= -g
 XFILES :=
 
 SOURCES := $(SRCDIR)/*.cpp
+SOURCES = $(filter-out $(SRCDIR)/flips-gtk.cpp $(SRCDIR)/flips-w32.cpp,$(SOURCES))
 
 PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/bin
@@ -53,6 +54,7 @@ ifeq ($(TARGET),)
 endif
 
 ifeq ($(TARGET),gtk)
+  SOURCES += $(SRCDIR)/flips-gtk.cpp
   ifeq ($(GTKFLAGS),)
     GTKFLAGS := $(shell pkg-config --cflags --libs gtk+-3.0)
   endif
@@ -76,6 +78,7 @@ clean: | obj
 	rm obj/* || true
 
 ifeq ($(TARGET),windows)
+  SOURCES += $(SRCDIR)/flips-w32.cpp
   XFILES += obj/rc.o
 obj/rc.o: flips.rc flips.h | obj
 	windres flips.rc obj/rc.o

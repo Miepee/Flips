@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: make
         shell: bash
-        run: CC=cl.exe CXX=cl.exe TARGET=windows make
+        run: TARGET=windows make
     
     #defaults:
     #  run:

@@ -41,7 +41,7 @@ jobs:
           base-devel 
           mingw-w64-x86_64-toolchain
           make
-          mingw-w64-gtk3
+          mingw-w64-x86_64-gtk3
           p7zip
 
     - name: make

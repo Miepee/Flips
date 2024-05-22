@@ -45,4 +45,4 @@ jobs:
           p7zip
 
     - name: make
-      run: TARGET=windows make
+      run: TARGET=windows mingw32-make

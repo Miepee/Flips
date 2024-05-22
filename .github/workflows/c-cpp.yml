@@ -29,20 +29,26 @@ jobs:
 
   windows:
     runs-on: windows-latest
-    defaults:
-      run:
-        shell: msys2 {0}
-    steps: 
-    - uses: actions/checkout@v4
-    - uses: msys2/setup-msys2@v2
-      with:
-        update: true
-        install: >-
-          base-devel 
-          mingw-w64-x86_64-toolchain
-          make
-          mingw-w64-x86_64-gtk3
-          p7zip
+    steps:
+      - uses: actions/checkout@v4
+      - name: make
+        shell: bash
+        run: CC=cl.exe CXX=cl.exe TARGET=windows make
+    
+    #defaults:
+    #  run:
+    #    shell: msys2 {0}
+    #steps: 
+    #- uses: actions/checkout@v4
+    #- uses: msys2/setup-msys2@v2
+    #  with:
+    #    update: true
+    #    install: >-
+    #      base-devel 
+    #      mingw-w64-x86_64-toolchain
+    #      make
+    #      mingw-w64-x86_64-gtk3
+    #      p7zip
 
-    - name: make
-      run: TARGET=windows mingw32-make
+    #- name: make
+    #  run: TARGET=windows mingw32-make

@@ -64,14 +64,14 @@ jobs:
     - name: Create zips
       run: |
         tree ./builds
-        zip -9 ./flips-linux-zip ./builds/linux-x64-gui/flips
-        zip -9 ./flips-windows-zip ./builds/windows-x64-gui/flips.exe
-        zip -9 ./flips-macos-zip ./builds/macos-m1-gui/flips
+        zip -9 ./flips-linux.zip ./builds/linux-x64-gui.zip/flips
+        zip -9 ./flips-windows.zip ./builds/windows-x64-gui.zip/flips.exe
+        zip -9 ./flips-macos.zip ./builds/macos-m1-gui.zip/flips
     - name: Upload GitHub Release
       uses: svenstaro/upload-release-action@2.9.0
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: builds/**
+        file: flips-*.zip
         file_glob: true
         tag: v${{ steps.flips_version.outputs.version }}
         body: "A release of commit ${{ github.sha }}"

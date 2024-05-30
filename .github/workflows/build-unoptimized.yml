@@ -44,4 +44,4 @@ jobs:
       # Also yes, that requires either shenanigans or a seperate action. 
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Make target ${{ matrix.target }}
-        run:  $env:LFLAGS='gdi32.lib comdlg32.lib comctl32.lib user32.lib kernel32.lib shell32.lib advapi32.lib'; $env:TARGET='${{ matrix.target }}'; make
+        run:  $env:CXX='cl.exe'; $env:LFLAGS='gdi32.lib comdlg32.lib comctl32.lib user32.lib kernel32.lib shell32.lib advapi32.lib'; $env:TARGET='${{ matrix.target }}'; make

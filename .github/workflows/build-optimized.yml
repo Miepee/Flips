@@ -61,11 +61,16 @@ jobs:
     - name: Find Flips version
       id: flips_version
       run: echo version=$(git rev-list --count master) >> $GITHUB_OUTPUT
+    - name: Create zips
+      run: |
+        zip -9 ./flips-linux-zip ./builds/linux-x64-gui/flips
+        zip -9 ./flips-windows-zip ./builds/windows-x64-gui/flips.exe
+        zip -9 ./flips-macos-zip ./builds/macos-m1-gui/flips
     - name: Upload GitHub Release
       uses: svenstaro/upload-release-action@2.9.0
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: builds/**
         file_glob: true
-        tag: v${{ steps.flips_version.version }}
+        tag: v${{ steps.flips_version.outputs.version }}
         body: ""

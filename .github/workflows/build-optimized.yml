@@ -63,6 +63,7 @@ jobs:
       run: echo version=$(git rev-list --count master) >> $GITHUB_OUTPUT
     - name: Create zips
       run: |
+        tree ./builds
         zip -9 ./flips-linux-zip ./builds/linux-x64-gui/flips
         zip -9 ./flips-windows-zip ./builds/windows-x64-gui/flips.exe
         zip -9 ./flips-macos-zip ./builds/macos-m1-gui/flips
@@ -73,4 +74,4 @@ jobs:
         file: builds/**
         file_glob: true
         tag: v${{ steps.flips_version.outputs.version }}
-        body: ""
+        body: "A release of commit ${{ github.sha }}"
